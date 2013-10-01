@@ -1,0 +1,25 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#div1{
+   border:2px solid;
+   border-radius:25px;
+   box-shadow: 10px 10px 5px #888888;
+   text-shadow: 2px 2px 2px #008899;
+}
+
+#div2{
+    border:2px solid;
+    border-radius:25px;
+    background:url(/images/faded.jpeg);
+    background-repeat:no-repeat;
+    background-size:100% 100%;
+    background-origin:content-box;
+    text-shadow: 2px 2px 2px #FFFFFF;
+}
