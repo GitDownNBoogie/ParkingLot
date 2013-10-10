@@ -1,0 +1,76 @@
+doctype 5
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+    script(type='text/javascript').
+      var lastMessage;
+      window.onload = function(){
+
+        var ws = new WebSocket('ws://localhost:3000');
+        ws.onopen = function(){
+          ping();
+        }
+
+        ws.onmessage = function(ev){
+          document.getElementById('latency').innerHTML = new Date - lastMessage
+          ping();
+        }
+
+        function ping(){
+          lastMessage = +new Date;
+          ws.send('ping');
+        }
+
+        function setSlowRspMsgStart(){
+
+           document.getElementById("longResponse").innerHTML = "waiting..."
+        }
+
+        function setSlowRspMsgMid(){
+
+           document.getElementById("longResponse").innerHTML = "please be patient..."
+        }
+
+        function setSlowRspMsgEnd(){
+
+           var html = "<select><option value='waitMore'>Wait More</option><option value='result'>Result</option></select>";
+           document.getElementById("longResponse").innerHTML = "Done! " + html;
+        }
+
+        document.getElementById("button-delayed").onclick = function(){
+
+            setSlowRspMsgStart();
+            var messages = 1;
+            var ws = new WebSocket('ws://localhost:3000');
+
+            continuePinging = function(){
+              ws.send('slowPing');
+              console.log("ManyPings");
+            }
+
+            ws.onopen = function(){
+              continuePinging();
+            }
+
+            ws.onmessage = function(ev){
+
+              messages+=1;
+              if(messages == 6000){
+                setSlowRspMsgMid();
+                continuePinging();
+              }
+              else if(messages == 12000){
+                setSlowRspMsgEnd();
+              }
+              else{
+                continuePinging();
+              }
+            }
+        }
+      }
+
+
+  body
+    block content

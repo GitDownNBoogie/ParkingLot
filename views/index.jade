@@ -1,6 +1,7 @@
-extends layout
+extends layout-index
 
 block content
+
   h1= title
 
   p Welcome to #{title}
@@ -9,10 +10,19 @@ block content
 
   h2= description
 
+  form(action="/history", method="post")
+    input(type="submit", value="Quick History", id="btn")
+
+  br
+  br
+
+  button(id="button-delayed") Longer History
+  span#longResponse  It can take a while
+
   ul#options
-    li About the parking lot
-    li Parking with us
-    li Rates and Rewards
+    li We chase away birds and intruders
+    li We wash your car, inside and out
+    li All you can eat popcorn
 
   div#div1
       p.
@@ -37,3 +47,10 @@ block content
         Parking lot has been around for over fifty years, and has grown
         by a factor of 500. We have cleared out wetlands, cut down trees
         relocated wildlife, even moved a few people out of their homes.
+
+  br
+  br
+  span Debugging Info
+  h4 Socket Latency
+    span#latency
+    span ms

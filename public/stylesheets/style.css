@@ -9,17 +9,28 @@ a {
 
 #div1{
    border:2px solid;
-   border-radius:25px;
+   border-radius:30px;
+   padding: 10px;
    box-shadow: 10px 10px 5px #888888;
    text-shadow: 2px 2px 2px #008899;
 }
 
 #div2{
+    font-size: 14px;
     border:2px solid;
-    border-radius:25px;
+    border-radius:20px;
+    padding: 2px;
     background:url(/images/faded.jpeg);
     background-repeat:no-repeat;
-    background-size:100% 100%;
+    background-size:140% 140%;
     background-origin:content-box;
-    text-shadow: 2px 2px 2px #FFFFFF;
+    box-shadow: 4px 4px 4px #008899;
+}
+
+#btn{
+    font-size: 3em;
+}
+
+#longResponse{
+    padding: 2em;
 }
