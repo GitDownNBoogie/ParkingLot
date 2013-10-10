@@ -11,12 +11,9 @@ block content
   h2= description
 
   form(action="/history", method="post")
-    input(type="submit", value="Quick History", id="btn")
+    input(type="submit", value="Quick History", id="quickHistory")
 
-  br
-  br
-
-  button(id="button-delayed") Longer History
+  button(id="longHistory") Longer History
   span#longResponse  It can take a while
 
   ul#options
