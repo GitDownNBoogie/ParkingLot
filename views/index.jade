@@ -2,9 +2,9 @@ extends layout-index
 
 block content
 
-  h1= title
+  h1(id="companyName")= title
 
-  p Welcome to #{title}
+  p(id="welcomeMessage") Welcome to #{title}
 
   img(src='/images/parking_icon.jpeg')
 
