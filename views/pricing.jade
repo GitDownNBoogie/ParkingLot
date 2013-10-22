@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+  img(src='/images/parking_icon.jpeg')
+
+  h2= title
+
+  ul
+    for entry in prices
+      li #{entry.time}: $#{entry.cost}
+

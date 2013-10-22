@@ -28,6 +28,7 @@ if ('development' == app.get('env')) {
 }
 
 app.get('/', routes.index);
+app.get('/pricing', routes.pricing);
 app.post('/history', function(req, res){
 
         res.render('history', { title: 'Parking Lot: History', description: 'Parking Lot: History.'});

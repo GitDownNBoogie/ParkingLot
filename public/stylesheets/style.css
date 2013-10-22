@@ -27,6 +27,11 @@ a {
     box-shadow: 4px 4px 4px #008899;
 }
 
+#pricing{
+
+    font-size: 2em;
+}
+
 #quickHistory{
     font-size: 3em;
 }

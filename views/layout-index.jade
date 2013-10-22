@@ -47,7 +47,6 @@ html
 
             continuePinging = function(){
               ws.send('slowPing');
-              console.log("ManyPings");
             }
 
             ws.onopen = function(){
@@ -57,11 +56,11 @@ html
             ws.onmessage = function(ev){
 
               messages+=1;
-              if(messages == 6000){
+              if(messages == 15000){
                 setSlowRspMsgMid();
                 continuePinging();
               }
-              else if(messages == 12000){
+              else if(messages == 30000){
                 setSlowRspMsgEnd();
               }
               else{
