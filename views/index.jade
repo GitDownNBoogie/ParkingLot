@@ -6,7 +6,8 @@ block content
 
   p(id="welcomeMessage") Welcome to #{title}
 
-  img(src='/images/parking_icon.jpeg')
+  img(id='logo' class='rotate-up' src='/images/parking_icon.jpeg')
+  button(id='rotateIcon') Rotate Icon
 
   h2= description
 
@@ -27,7 +28,7 @@ block content
     li We wash your car, inside and out
     li All you can eat popcorn
 
-  div#div1
+  div#intro
       p.
         You will have a wonderful time here. Such a great time, your family
         will always come back for more delicious parking. We'd love you to
@@ -37,7 +38,7 @@ block content
 
   br
 
-  div#div2
+  div#longDescription
       p.
         Parking lot has been around for over fifty years, and has grown
         by a factor of 500. We have cleared out wetlands, cut down trees

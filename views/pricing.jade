@@ -6,7 +6,7 @@ block content
 
   h2= title
 
-  ul
+  ul(id='prices')
     for entry in prices
-      li #{entry.time}: $#{entry.cost}
+      li(class='price') #{entry.time}: $#{entry.cost}
 
