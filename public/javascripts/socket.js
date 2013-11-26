@@ -1,64 +1,57 @@
 var lastMessage;
 window.onload = function(){
 
-    var ws = new WebSocket('ws://localhost:3000');
-    ws.onopen = function(){
-        ping();
-    }
-
-    ws.onmessage = function(ev){
-        document.getElementById('latency').innerHTML = new Date - lastMessage
-        ping();
-    }
+    var mainSocket = new WebSocket('ws://localhost:3000');
 
     function ping(){
         lastMessage = +new Date;
-        ws.send('ping');
+        mainSocket.send('ping');
     }
 
-    function setSlowRspMsgStart(){
-
-        document.getElementById("longResponse").innerHTML = "waiting..."
+    mainSocket.onopen = function(){
+        ping();
     }
 
-    function setSlowRspMsgMid(){
-
-        document.getElementById("longResponse").innerHTML = "please be patient..."
-    }
-
-    function setSlowRspMsgEnd(){
-
-        var html = "<select id='longHistoryOptions'><option value='waitMore'>Wait More</option><option value='result'>Result</option></select>";
-        document.getElementById("longResponse").innerHTML = "Done! " + html;
+    mainSocket.onmessage = function(){
+        document.getElementById('latency').innerHTML = new Date - lastMessage
+        ping();
     }
 
     document.getElementById("longHistory").onclick = function(){
 
         setSlowRspMsgStart();
-        var messages = 1;
-        var ws = new WebSocket('ws://localhost:3000');
 
-        continuePinging = function(){
-            ws.send('slowPing');
+        var slowResponseSocket = new WebSocket('ws://localhost:3000');
+
+        slowResponseSocket.onopen = function(){
+            slowResponseSocket.send('slowPing');
         }
 
-        ws.onopen = function(){
-            continuePinging();
-        }
+        slowResponseSocket.onmessage = function(ev){
 
-        ws.onmessage = function(ev){
+            console.log("Message: " + ev);
 
-            messages+=1;
-            if(messages == 10000){
+            setTimeout(function(){
                 setSlowRspMsgMid();
-                continuePinging();
-            }
-            else if(messages == 20000){
+            },5000);
+
+            setTimeout(function(){
+
                 setSlowRspMsgEnd();
-            }
-            else{
-                continuePinging();
-            }
+            },10000);
         }
+    }
+
+    function setSlowRspMsgStart(){
+        document.getElementById("longResponse").innerHTML = "waiting..."
+    }
+
+    function setSlowRspMsgMid(){
+        document.getElementById("longResponse").innerHTML = "please be patient..."
+    }
+
+    function setSlowRspMsgEnd(){
+        var html = "<select id='longHistoryOptions'><option value='waitMore'>Wait More</option><option value='result'>Result</option></select>";
+        document.getElementById("longResponse").innerHTML = "Done! " + html;
     }
 }
