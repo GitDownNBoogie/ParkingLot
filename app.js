@@ -1,62 +1,63 @@
-
 /**
  * Module dependencies.
  */
 
 var express = require('express'),
-routes = require('./routes'),
-http = require('http'),
-path = require('path'),
-wsio = require('websocket.io'),
-mongoClient = require('mongodb').MongoClient;
+    routes = require('./routes'),
+    http = require('http'),
+    path = require('path'),
+    sio = require('socket.io'),
+    mongoClient = require('mongodb').MongoClient;
 
 /*
-mongoClient.connect('mongodb://localhost:27017/parking-lot', function(err, db){
+ mongoClient.connect('mongodb://localhost:27017/parking-lot', function(err, db){
 
-    "use strict";
-    if(err) throw err;
+ "use strict";
+ if(err) throw err;
  */
 
-    var app = express();
+var exprs = express();
 
 // all environments
-    app.set('port', process.env.PORT || 3000);
-    app.set('views', __dirname + '/views');
-    app.set('view engine', 'jade');
-    app.use(express.favicon());
-    app.use(express.logger('dev'));
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(app.router);
-    app.use(express.static(path.join(__dirname, 'public')));
+exprs.set('port', process.env.PORT || 3000);
+exprs.set('views', __dirname + '/views');
+exprs.set('view engine', 'jade');
+exprs.use(express.favicon());
+exprs.use(express.logger('dev'));
+exprs.use(express.bodyParser());
+exprs.use(express.methodOverride());
+exprs.use(exprs.router);
+exprs.use(express.static(path.join(__dirname, 'public')));
 
 // development only
-    if ('development' == app.get('env')) {
-        app.use(express.errorHandler());
-    }
+if ('development' == exprs.get('env')) {
+    exprs.use(express.errorHandler());
+}
 
-    app.get('/', routes.index);
-    app.get('/pricing', routes.pricing);
-    app.post('/history', function(req, res){
+exprs.get('/', routes.index);
+exprs.get('/pricing', routes.pricing);
+exprs.post('/history', function (req, res) {
 
-        res.render('history', { title: 'Parking Lot: History', description: 'Parking Lot: History.'});
+    res.render('history', { title:'Parking Lot: History', description:'Parking Lot: History.'});
+});
+
+var app = http.createServer(exprs);
+var io = sio.listen(app);
+
+io.sockets.on('connection', function (socket) {
+
+    console.log("Somebody connected via websocket");
+
+    socket.on('message', function (msg) {
+
+        console.log("Received message: " + msg);
+        socket.emit('response', 'world');
     });
+});
 
-    var server = http.createServer(app);
-    var ws = wsio.attach(server);
-
-    ws.on('connection', function(socket){
-
-        socket.on('message', function(msg){
-
-            var rsp = 'pong';
-            socket.send(rsp);
-        });
-    });
-
-    server.listen(app.get('port'), function(){
-        console.log('Express server listening on port ' + app.get('port'));
-    });
+app.listen(exprs.get('port'), function () {
+    console.log('Express server listening on port ' + exprs.get('port'));
+});
 //});
 
 
