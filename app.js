@@ -36,6 +36,7 @@ if ('development' == exprs.get('env')) {
 
 exprs.get('/', routes.index);
 exprs.get('/pricing', routes.pricing);
+exprs.get('/js-sandbox', routes.js_sandbox);
 exprs.post('/history', function (req, res) {
 
     res.render('history', { title:'Parking Lot: History', description:'Parking Lot: History.'});
