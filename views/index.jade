@@ -11,19 +11,17 @@ block content
 
   h2= description
 
-  a(id='pricing' href='/pricing') Prices
-  br
-  br
-  a(href='/js-sandbox') Javascript Sandbox
-  br
-  br
-  br
+  div(class='padded')
+    a(class='jade-sandbox' href='/jade-sandbox') Jade Sandbox
+  div(class='padded')
+    a(class='js-sandbox' href='/js-sandbox') Javascript Sandbox
 
-  form(action="/history", method="post")
-    input(type="submit", value="Quick History", id="quickHistory")
+  div(class='padded')
+    form(action="/history", method="post")
+      input(type="submit", value="Quick History", id="quickHistory")
 
-  button(id="longHistory") Longer History
-  span#longResponse  It can take a while
+    button(id="longHistory") Longer History
+    span#longResponse  It can take a while
 
   ul#options
     li We chase away birds and intruders

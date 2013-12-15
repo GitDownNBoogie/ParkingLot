@@ -27,9 +27,12 @@ a {
     box-shadow: 4px 4px 4px #008899;
 }
 
-#pricing{
+div.padded{
+    padding: 1em 1em 1em 1em;
+}
 
-    font-size: 2em;
+.jade-sandbox, .js-sandbox{
+    font-size: 1.5em;
 }
 
 #quickHistory{

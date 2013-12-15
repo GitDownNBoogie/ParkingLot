@@ -6,9 +6,9 @@ exports.js_sandbox = function(req, res){
   res.render('js-sandbox', { title: 'Javascript Sandbox'});
 };
 
-exports.pricing = function(req, res){
+exports.jade_sandbox = function(req, res){
     res.render('pricing',{
-        title:"Pricing",
+        title:"Jade Sandbox",
         prices:[
             {time:"Hour", cost:"10"},
             {time:"Day", cost:"100"},

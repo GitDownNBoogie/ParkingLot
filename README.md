@@ -1,8 +1,8 @@
 # Parking Lot
 
 This is a node.js web application originally written to act as a target for Selenium tests.
-It is now used as a place to tinker with front end technologies (html5, css3, javascript, client-side mvc),
-middleware (jade, web sockets), and mongodb.
+It is now used as a place to tinker with technologies:
+html5, css3, javascript, express, jade, web sockets, and mongodb.
 
 # Getting Started
 

@@ -6,24 +6,40 @@ var express = require('express'),
     routes = require('./routes'),
     http = require('http'),
     path = require('path'),
-    sio = require('socket.io'),
-    mongoClient = require('mongodb').MongoClient;
+    socketIo = require('socket.io'),
+    mongoClient = require('mongodb').MongoClient,
+    convoy = require('convoy'); // asset pipeline
 
-/*
+/* TODO: WIP - mongodb
  mongoClient.connect('mongodb://localhost:27017/parking-lot', function(err, db){
 
  "use strict";
  if(err) throw err;
  */
 
+/* TODO: WIP - asset pipeline
+var pipeline = convoy({
+
+  'app.js':{
+    packager: 'javascript',
+    main: path.resolve('app/main.js'), // starting module to include
+    minify: true // must be set to minify output
+  },
+  'assets':{
+    packager: 'copy',
+    root: 'app/assets'
+  }
+});
+*/
+
 var exprs = express();
 
-// all environments
+exprs.use(express.logger('dev'));
+
 exprs.set('port', process.env.PORT || 3000);
 exprs.set('views', __dirname + '/views');
 exprs.set('view engine', 'jade');
 exprs.use(express.favicon());
-exprs.use(express.logger('dev'));
 exprs.use(express.bodyParser());
 exprs.use(express.methodOverride());
 exprs.use(exprs.router);
@@ -35,7 +51,7 @@ if ('development' == exprs.get('env')) {
 }
 
 exprs.get('/', routes.index);
-exprs.get('/pricing', routes.pricing);
+exprs.get('/jade-sandbox', routes.jade_sandbox);
 exprs.get('/js-sandbox', routes.js_sandbox);
 exprs.post('/history', function (req, res) {
 
@@ -43,7 +59,7 @@ exprs.post('/history', function (req, res) {
 });
 
 var app = http.createServer(exprs);
-var io = sio.listen(app);
+var io = socketIo.listen(app);
 
 io.sockets.on('connection', function (socket) {
 
