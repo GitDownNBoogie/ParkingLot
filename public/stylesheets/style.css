@@ -7,6 +7,18 @@ a {
   color: #00B7FF;
 }
 
+.home-link{
+    border-radius: .8em;
+    background-origin: content-box;
+    box-shadow: 2px 2px 2px #008899;
+    margin-bottom: 1em;
+    width: 5.1em;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding: 1.3em;
+    background: url(/images/parking-arrow.jpeg);
+}
+
 #intro{
    border:2px solid;
    border-radius:30px;
@@ -47,27 +59,23 @@ div.padded{
     padding: 2em;
 }
 
-rotate-up{
-
-}
-
 .rotate-right
 {
     transform: rotate(90deg);
-    -ms-transform: rotate(90deg); /* IE 9 */
-    -webkit-transform: rotate(90deg); /* Safari and Chrome */
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
 }
 
 .rotate-down
 {
     transform: rotate(180deg);
-    -ms-transform: rotate(180deg); /* IE 9 */
-    -webkit-transform: rotate(180deg); /* Safari and Chrome */
+    -ms-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
 }
 
 .rotate-left
 {
     transform: rotate(270deg);
-    -ms-transform: rotate(270deg); /* IE 9 */
-    -webkit-transform: rotate(270deg); /* Safari and Chrome */
+    -ms-transform: rotate(270deg);
+    -webkit-transform: rotate(270deg);
 }

@@ -4,10 +4,6 @@ $('#rotateIcon').click(function(){
 
     switch(logo.attr('class'))
     {
-        case 'rotate-up':
-            logo.removeClass('rotate-up');
-            logo.addClass('rotate-right');
-            break;
         case 'rotate-right':
             logo.removeClass('rotate-right');
             logo.addClass('rotate-down');
@@ -18,8 +14,8 @@ $('#rotateIcon').click(function(){
             break;
         case 'rotate-left':
             logo.removeClass('rotate-left');
-            logo.addClass('rotate-up');
             break;
+      default:
+        logo.addClass('rotate-right');
     }
-    //$(this).removeClass(['rotate-*']);
 });
