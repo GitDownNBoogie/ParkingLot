@@ -7,30 +7,8 @@ var express = require('express'),
     http = require('http'),
     path = require('path'),
     socketIo = require('socket.io'),
-    mongoClient = require('mongodb').MongoClient,
-    convoy = require('convoy'); // asset pipeline
+    cart = require('./routes/cart');
 
-/* TODO: WIP - mongodb
- mongoClient.connect('mongodb://localhost:27017/parking-lot', function(err, db){
-
- "use strict";
- if(err) throw err;
- */
-
-/* TODO: WIP - asset pipeline
-var pipeline = convoy({
-
-  'app.js':{
-    packager: 'javascript',
-    main: path.resolve('app/main.js'), // starting module to include
-    minify: true // must be set to minify output
-  },
-  'assets':{
-    packager: 'copy',
-    root: 'app/assets'
-  }
-});
-*/
 
 var exprs = express();
 
@@ -54,9 +32,13 @@ exprs.get('/', routes.index);
 exprs.get('/jade-sandbox', routes.jade_sandbox);
 exprs.get('/js-sandbox', routes.js_sandbox);
 exprs.post('/history', function (req, res) {
-
     res.render('history', { title:'Parking Lot: History', description:'Parking Lot: History.'});
 });
+exprs.get('/cart', cart.findAll);
+exprs.get('/cart/:id', cart.findById);
+exprs.post('/cart', cart.addToCart);
+exprs.put('/cart/:id', cart.updateCart);
+exprs.delete('/cart/:id', cart.removeFromCart);
 
 var app = http.createServer(exprs);
 var io = socketIo.listen(app);
