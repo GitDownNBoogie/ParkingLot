@@ -1,5 +1,5 @@
-var request = require('superagent');
-var expect = require('expect.js');
+const request = require('superagent');
+const expect = require('expect.js');
 
 // TODO: Runs with 'mocha home-page-happy-path.js' This may be enough for CI.
 
