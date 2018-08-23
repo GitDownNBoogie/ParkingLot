@@ -1,19 +1,17 @@
 # Parking Lot
 
-This is a node.js web application originally written to act as a target for Selenium tests.
-It is now used as a place to tinker with technologies:
-html5, css3, javascript, express, jade, web sockets, and mongodb.
+This is a Node application that has been built, abandoned, restored per changes to the Node
+ecosystem
 
 # Getting Started
 
-Install [node.js](http://nodejs.org/)
+Your guess is as good as mine. 
 
-**npm install** from the top level directory to fetch the dependencies
-
-**node app.js** to start the server
+It ran with npm. It was going to run with Grunt, and then Gulp. Then Yarn. Maybe 
+WebPack?
 
 # Running mocha tests
 
 In the /mocha-tests directory, **mocha [testname]**
 
-Mongodb is currently not enabled. Once it is, instructions will be added to setup.
+TODO: Resurrect this as well.

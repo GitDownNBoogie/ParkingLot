@@ -1,23 +1,14 @@
-extends layout-index
+extends layout-standard
 
 block content
-
-  h1(id="companyName")= title
 
   p(id="welcomeMessage") Welcome to #{title}
 
   img(id='logo' src='/images/parking_icon.jpeg')
   button(id='rotateIcon') Rotate Icon
 
-  h2= description
-
   div(class='padded')
-    a(class='jade-sandbox' href='/jade-sandbox') Jade Sandbox
-  div(class='padded')
-    a(class='js-sandbox' href='/js-sandbox') Javascript Sandbox
-
-  div(class='padded')
-    form(action="/history", method="post")
+    form(action="/history", method="get")
       input(type="submit", value="Quick History", id="quickHistory")
 
     button(id="longHistory") Longer History
