@@ -1,14 +1,15 @@
-!!! 5
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+doctype html
 
-  body
+html(lang="en")
+    head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+
+    body
+        include includes/header
     block content
 
 script(src='http://code.jquery.com/jquery-1.10.2.min.js')
 script(src='/javascripts/animation.js')
 script(src='/javascripts/slow-history.js')
-script(src='/javascripts/socket.js')
 script(src='/socket.io/socket.io.js')

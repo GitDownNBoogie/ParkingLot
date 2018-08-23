@@ -1,6 +1,6 @@
 $('#rotateIcon').click(function(){
 
-    var logo = $('#logo');
+    let logo = $('#logo');
 
     switch(logo.attr('class'))
     {

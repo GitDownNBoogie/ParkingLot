@@ -14,9 +14,8 @@ a {
     margin-bottom: 1em;
     width: 5.1em;
     background-size: 100%;
-    background-repeat: no-repeat;
     padding: 1.3em;
-    background: url(/images/parking-arrow.jpeg);
+    background: url(../images/parking-arrow.jpeg) no-repeat;
 }
 
 #intro{
@@ -24,7 +23,7 @@ a {
    border-radius:30px;
    padding: 10px;
    box-shadow: 10px 10px 5px #888888;
-   text-shadow: 2px 2px 2px #008899;
+   text-shadow: 1px 1px 1px #008899;
 }
 
 #longDescription{
@@ -32,8 +31,7 @@ a {
     border:2px solid;
     border-radius:20px;
     padding: 2px;
-    background:url(/images/faded.jpeg);
-    background-repeat:no-repeat;
+    background: url(../images/faded.jpeg) no-repeat;
     background-size:140% 140%;
     background-origin:content-box;
     box-shadow: 4px 4px 4px #008899;
